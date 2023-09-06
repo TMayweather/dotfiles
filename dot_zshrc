@@ -1,0 +1,53 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd
+bindkey -e
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+#bindkey "$terminfo[kcuu1]" history-substring-search-up
+#bindkey "$terminfo[kcud1]" history-substring-search-down
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/tmayweather/.zshrc'
+alias k='kubectl'
+alias h='helm'
+alias f='flux'
+alias p='pulumi'
+alias t='terraform'
+alias a='ansible'
+alias sp='spotify_player'
+export PATH="$PATH:/home/tmayweather/.cargo/bin"
+export KUBECONFIG=~/.kube/config
+
+
+
+#zplug plugins
+source ~/.zplug/init.zsh
+#source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+zplug "agpenton/1password-zsh-plugin"
+zplug "zshzoo/cd-ls"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zdharma-continuum/fast-syntax-highlighting"
+#zplug "agkozak/zsh-z"
+zplug "plugins/autojump", from:oh-my-zsh
+source /etc/profile.d/autojump.sh
+#zplug 'dracula/zsh', as:theme
+
+. "$HOME/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+eval "$(starship init zsh)"
+source <(kubectl completion zsh)
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH="$PATH:/home/tmayweather/.local/bin"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+command -v flux >/dev/null && . <(flux completion zsh)
+
+
+
+
