@@ -40,6 +40,8 @@ function main() {
   if is_zsh_installed ; then
     install_zplug_plugins
     update_zplug_plugins
+    run_zsh_command "zplug load"
+    source ~/.zshrc
   fi
 }
 
