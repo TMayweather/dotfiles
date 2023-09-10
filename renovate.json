@@ -2,5 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
-  ]
+    "github>TMayweather/renovate-config"
+  ],
+  platform: "github"
+  username: "starfire-bot[bot]"
 }

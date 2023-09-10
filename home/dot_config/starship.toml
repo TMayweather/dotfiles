@@ -1,0 +1,62 @@
+format = """
+[╭─](#8be9fd) $hostname$kubernetes$fill$git_branch$git_status$aws$python$terraform$pulumi
+[╰─](#8be9fd) $directory$character\n"""
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[✖](bold red)"
+
+[directory]
+format = "[ $path]($style)[$read_only]($read_only_style) "
+read_only = " "
+truncation_length = 3
+truncation_symbol = "…/"
+style = "blue"
+
+[git_branch]
+symbol = " "
+format = "[\\[$symbol$branch\\]]($style) "
+
+[git_status]
+style = "bold #ff5555"
+disabled = false
+
+[hostname]
+style = "#bd93f9"
+disabled = false
+
+[cmd_duration]
+min_time=2_500
+
+[fill]
+style = "bold #6272a4"
+
+[aws]
+#symbol = '☁️ '
+#format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)
+#force_display = true
+#disabled = false
+style = "bold #f1fa8c"
+
+
+[kubernetes]
+symbol = "󱃾 "
+format = "[\\[$symbol$context \\($namespace\\)\\]]($style) "
+style  = "#ffb86c"
+disabled = false
+
+[pulumi]
+style = "bold #bd93f9"
+
+[python]
+symbol = '🐍 '
+format = "[\\[$symbol$pyenv_prefix($version )(\\($virtualenv\\))\\]]($style) "
+style = "bold #50fa7b"
+
+[terraform]
+symbol = "󱁢 "
+format = "[\\[$symbol$workspace\\]]($style) "
+
+[username]
+style_user = "bold blue"
+
