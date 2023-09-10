@@ -3,6 +3,4 @@
   "extends": [
     "config:base"
   ],
-  platform: "github"
-  username: "starfire-bot[bot]"
 }
