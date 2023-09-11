@@ -2,7 +2,7 @@ asdf_versions:
   1password-cli: "2.20.0" 
   age: "1.1.1" # renovate: depName=FiloSottile/age
   awscli: "2.11.26"
-  chezmoi: "2.39.0" # renovate: depName=twpayne/chezmoi
+  chezmoi: "2.39.1" # renovate: depName=twpayne/chezmoi
   dagger: "0.8.4" # renovate: depName=dagger/dagger
   flux2: "2.1.0" # renovate: depName=fluxcd/flux2
   github-cli: "2.33.0" # renovate: depName=cli/cli
