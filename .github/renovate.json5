@@ -1,0 +1,10 @@
+{
+  // General RenovateBot configuration
+  extends: [
+    "github>TMayweather/renovate-config",
+    "github>TMayweather/renovate-config:automerge-github-actions",
+  ],
+  platform: "github",
+  username: "bot-marley[bot]",
+  gitAuthor: "bot-marley <144719554+bot-marley[bot]@users.noreply.github.com>",
+}
