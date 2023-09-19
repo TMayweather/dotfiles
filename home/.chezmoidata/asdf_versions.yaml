@@ -5,7 +5,7 @@ asdf_versions:
   chezmoi: "2.39.1" # renovate: depName=twpayne/chezmoi
   dagger: "0.8.4" # renovate: depName=dagger/dagger
   flux2: "2.1.0" # renovate: depName=fluxcd/flux2
-  github-cli: "2.34.0" # renovate: depName=cli/cli
+  github-cli: "2.35.0" # renovate: depName=cli/cli
   helm: "3.12.3" # renovate: depName=helm/helm
   k9s: "0.27.4" # renovate: depName=derailed/k9s
   kubectl: "1.28.1" # renovate: depName=kubernetes/kubectl datasource=github-tags extractVersion=^kubernetes-(?<version>.*)$
