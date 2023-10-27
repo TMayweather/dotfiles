@@ -14,6 +14,16 @@ function run_zsh_command() {
   $(command -v zsh) -c "$1"
 }
 
+
+function is_zplug_installed() {
+  command -v zplug > /dev/null
+}
+
+function install_zplug() {
+  echo "Installing zplug..."
+  git clone https://github.com/zplug/zplug ~/.zplug
+}
+
 function update_zplug_plugins() {
   echo "Updating zplug plugins..."
   run_zsh_command "zplug update" &> /dev/null
