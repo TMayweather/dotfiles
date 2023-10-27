@@ -9,9 +9,10 @@ error_symbol = "[✖](bold red)"
 [directory]
 format = "[ $path]($style)[$read_only]($read_only_style) "
 read_only = " "
-truncation_length = 3
-truncation_symbol = "…/"
+truncation_length = 2
+truncation_symbol = "./"
 style = "blue"
+
 
 [git_branch]
 symbol = " "
@@ -44,6 +45,7 @@ symbol = "󱃾 "
 format = "[\\[$symbol$context \\($namespace\\)\\]]($style) "
 style  = "#ffb86c"
 disabled = false
+
 
 [pulumi]
 style = "bold #bd93f9"
