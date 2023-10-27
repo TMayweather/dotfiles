@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Source: https://github.com/twpayne/chezmoi/pull/1795
+
+if command -v age >/dev/null 2>&1; then
+    if [ ! -f "{{ .chezmoi.homeDir }}/.config/age/keys.txt" ]; then
+        mkdir -p "{{ .chezmoi.homeDir }}/.config/age"
+        age --decrypt --output "{{ .chezmoi.homeDir }}/.config/age/keys.txt" "{{ .chezmoi.sourceDir }}/.keys.txt.age"
+        chmod 600 "{{ .chezmoi.homeDir }}/.config/age/keys.txt"
+    fi
+fi
