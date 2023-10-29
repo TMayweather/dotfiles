@@ -6,8 +6,12 @@ function is_brew_installed() {
   command -v brew > /dev/null
 }
 
+function is_zplug_installed() {
+  command --version zplug > /dev/null
+}
+
 function is_asdf_installed() {
-  command -v asdf > /dev/null
+  command --version asdf > /dev/null
 }
 
 function is_chezmoi_installed() {
@@ -28,20 +32,26 @@ function apply_dotfiles() {
 
 function main() {
   if ! is_brew_installed ; then
-    echo "Error! brew is not installed"
-    echo "Visit https://brew.sh to get started"
-    exit 1
+    echo "Installing brew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
+  if ! is_zplug_installed ; then
+    echo "Installing zplug..."
+    brew install zplug
   fi
 
   if ! is_asdf_installed ; then
-    echo "Error! asdf is not installed"
-    echo "Visit https://asdf-vm.com/guide/getting-started.html to get started"
-    exit 1
+    echo "Installing asdf..."
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+    echo ". $HOME/.asdf/asdf.sh" >> ~/.zshrc  # Adjust for your shell
   fi
 
   if ! is_chezmoi_installed ; then
-    install_asdf_plugin "chezmoi"
+    echo "Installing chezmoi..."
+    brew install chezmoi
   fi
+
   apply_dotfiles
 }
 

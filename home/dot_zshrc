@@ -8,7 +8,8 @@ bindkey -e
 #bindkey '^[[B' history-substring-search-down
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/tmayweather/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
+alias bls='betterlockscreen --lock'
 alias d='docker'
 alias dag='dagger'
 alias k='kubectl'
@@ -18,13 +19,13 @@ alias p='pulumi'
 alias t='terraform'
 alias ap='ansible-playbook'
 alias sp='spotify_player'
-export PATH="$PATH:/home/tmayweather/.cargo/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 export KUBECONFIG=~/.kube/config
 #export PATH=$PATH:/home/linuxbrew/.linuxbrew/opt/python@3.11/lib/python3.11/site-packages
 
 #export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 #zplug plugins
-source ~/.zplug/init.zsh
+source $HOME/.zplug/init.zsh
 zplug "agpenton/1password-zsh-plugin"
 zplug "zshzoo/cd-ls"
 zplug "plugins/autojump", from:oh-my-zsh
@@ -34,7 +35,7 @@ source /etc/profile.d/autojump.sh
 
 . "$HOME/.asdf/asdf.sh"
 fpath=(${ASDF_DIR}/completions $fpath)
-fpath=(~/.zsh/completions $fpath)
+fpath=($HOME/.zsh/completions $fpath)
 
 autoload -Uz compinit
 compinit
@@ -42,8 +43,8 @@ compinit
 eval "$(starship init zsh)"
 eval "$(op completion zsh)"; compdef _op op
 source <(kubectl completion zsh)
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-export PATH="$PATH:/home/tmayweather/.local/bin"
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH="$PATH:$HOME/.local/bin"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 command -v flux >/dev/null && . <(flux completion zsh)
 
