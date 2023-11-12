@@ -7,7 +7,7 @@ asdf_versions:
   github-cli: "2.36.0" # renovate: depName=cli/cli
   helm: "3.13.1" # renovate: depName=helm/helm
   chezmoi: "2.40.4" # renovate: depName=twpayne/chezmoi
-  k9s: "0.27.4" # renovate: depName=derailed/k9s
+  k9s: "0.28.2" # renovate: depName=derailed/k9s
   kubectl: "1.28.3" # renovate: depName=kubernetes/kubectl datasource=github-tags extractVersion=^kubernetes-(?<version>.*)$
   pulumi: "3.91.1" # renovate: depName=pulumi/pulumi
   python: "3.11.2"
