@@ -6,7 +6,7 @@ asdf_versions:
   flux2: "2.1.2" # renovate: depName=fluxcd/flux2
   github-cli: "2.36.0" # renovate: depName=cli/cli
   helm: "3.13.1" # renovate: depName=helm/helm
-  chezmoi: "2.40.4" # renovate: depName=twpayne/chezmoi
+  chezmoi: "2.41.0" # renovate: depName=twpayne/chezmoi
   k9s: "0.27.4" # renovate: depName=derailed/k9s
   kubectl: "1.28.3" # renovate: depName=kubernetes/kubectl datasource=github-tags extractVersion=^kubernetes-(?<version>.*)$
   pulumi: "3.91.1" # renovate: depName=pulumi/pulumi
