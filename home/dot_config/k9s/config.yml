@@ -15,7 +15,7 @@ k9s:
     sinceSeconds: 300
     fullScreenLogs: false
     textWrap: false
-    showTime: false
+    showTime: true
   currentContext: default
   currentCluster: default
   clusters:
@@ -24,12 +24,11 @@ k9s:
         active: all
         lockFavorites: false
         favorites:
-        - default
-        - selfhosted
-        - flux-system
-        - networking
-        - monitoring
         - all
+        - selfhosted
+        - monitoring
+        - networking
+        - actions-runner-system
       view:
         active: pods
       featureGates:
@@ -38,7 +37,7 @@ k9s:
         image: busybox:1.35.0
         command: []
         args: []
-        namespace: default
+        namespace: all
         limits:
           cpu: 100m
           memory: 100Mi
