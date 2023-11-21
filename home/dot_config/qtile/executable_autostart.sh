@@ -1,5 +1,10 @@
 #!/bin/bash
 lxpolkit &
+playerctld &
+alacritty &
+code &
+1password &
+numlockx &
 
 COLORSCHEME=Dracula 
 
