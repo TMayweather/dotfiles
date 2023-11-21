@@ -1,16 +1,14 @@
 asdf_versions:
-  1password-cli: "2.20.0" 
   age: "1.1.1" # renovate: depName=FiloSottile/age
   awscli: "2.11.26"
   dagger: "0.9.1" # renovate: depName=dagger/dagger
   flux2: "2.1.2" # renovate: depName=fluxcd/flux2
   github-cli: "2.36.0" # renovate: depName=cli/cli
   helm: "3.13.2" # renovate: depName=helm/helm
-  chezmoi: "2.40.4" # renovate: depName=twpayne/chezmoi
+  chezmoi: "2.41.0" # renovate: depName=twpayne/chezmoi
   k9s: "0.27.4" # renovate: depName=derailed/k9s
-  kubectl: "1.28.3" # renovate: depName=kubernetes/kubectl datasource=github-tags extractVersion=^kubernetes-(?<version>.*)$
+  kubectl: "1.28.4" # renovate: depName=kubernetes/kubectl datasource=github-tags extractVersion=^kubernetes-(?<version>.*)$
   pulumi: "3.91.1" # renovate: depName=pulumi/pulumi
-  python: "3.11.2"
   shellcheck: "0.9.0" # renovate: depName=koalaman/shellcheck
   starship: "1.16.0" # renovate: depName=starship/starship
   task: "3.29.1"  # renovate: depName=go-task/task

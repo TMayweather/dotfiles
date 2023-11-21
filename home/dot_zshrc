@@ -12,6 +12,9 @@ zstyle :compinstall filename '$HOME/.zshrc'
 alias bls='betterlockscreen --lock'
 alias d='docker'
 alias dag='dagger'
+alias git st="git status"
+alias git a="git add ."
+alias git p="git push"
 alias k='kubectl'
 alias m='micro'
 alias vi='nvim'
@@ -30,8 +33,12 @@ zplug "agpenton/1password-zsh-plugin"
 zplug "zshzoo/cd-ls"
 zplug "plugins/autojump", from:oh-my-zsh
 zplug "zdharma-continuum/fast-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "nvbn/thefuck"
+zplug "linnnus/autovenv"
 source /etc/profile.d/autojump.sh
 
+zplug load
 
 . "$HOME/.asdf/asdf.sh"
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -43,10 +50,12 @@ compinit
 eval "$(starship init zsh)"
 eval "$(op completion zsh)"; compdef _op op
 source <(kubectl completion zsh)
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export PATH="$PATH:$HOME/.local/bin"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 command -v flux >/dev/null && . <(flux completion zsh)
 
 
 
+
+eval $(thefuck --alias)

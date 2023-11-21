@@ -44,6 +44,7 @@ from pathlib import Path
 from qtile_extras import widget
 from qtile_extras.widget import WiFiIcon
 from qtile_extras.widget.decorations import PowerLineDecoration, RectDecoration
+from subprocess import Popen
 
 import colors
 
@@ -63,27 +64,6 @@ decor_layout = {
         filled=True, clip=True, padding_y=2)
     ],
 }
-
-# decor_layoutmemory = {
-#     "decorations": [
-#         RectDecoration(radius=6,
-#         filled=True, use_widget_background=True, clip=True)
-#     ],
-# }
-
-# decor_weather = {
-#     "decorations": [
-#         RectDecoration(radius=6,
-#         filled=True, use_widget_background=True, clip=True)
-#     ],
-# }
-
-# decor_net = {
-#     "decorations": [
-#         RectDecoration(radius=6,
-#         filled=True, use_widget_background=True, clip=True)
-#     ],
-# }
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -274,10 +254,6 @@ def init_widgets_list():
             use_mouse_wheel = False
         ),
         widget.CurrentLayout(font="JetBrains Mono Nerd Font Bold", font_size = 20, foreground = colors[8], background = colors[0]),
-        # widget.CurrentLayoutIcon(
-        #     foreground = colors[10],
-        #     background = colors[0]
-        # ),
         widget.Spacer(length = 10),
         widget.WindowName(
             font = "Fira Code Nerd Font Semi Bold", 
@@ -429,21 +405,22 @@ def assign_applications(client):
     if wm_class:
         wm_class = wm_class[0].lower()
 
-
         if wm_class in ["code", "steam"]:
             client.togroup("1")
 
-        if wm_class in ["firefox", "thunar"]:
+        elif wm_class in ["firefox", "thunar"]:
             client.togroup("2")
 
-        if wm_class in ["discord"]:
+        elif wm_class in ["discord"]:
             client.togroup("3")
 
-        if wm_class in ["alacritty", "thunderbird"]:
+        elif wm_class in ["alacritty", "thunderbird"]:
             client.togroup("4")
 
         elif wm_class in ["1password"]:
             client.togroup("6")
+
+
 
 @lazy.function
 def minimize_all(qtile):
@@ -494,6 +471,7 @@ def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
 
+    qtile.cmd_spawn("flatpak run com.discordapp.Discord")
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
