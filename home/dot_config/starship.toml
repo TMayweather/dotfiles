@@ -59,6 +59,3 @@ style = "bold #50fa7b"
 symbol = "󱁢 "
 format = "[\\[$symbol$workspace\\]]($style) "
 
-[username]
-style_user = "bold blue"
-
