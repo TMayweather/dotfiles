@@ -10,7 +10,7 @@ asdf_versions:
   pulumi: "3.94.2" # renovate: depName=pulumi/pulumi
   chezmoi: "2.42.2" # renovate: depName=twpayne/chezmoi
   pulumi: "3.95.0" # renovate: depName=pulumi/pulumi
-  kubectl: "1.28.4" # renovate: depName=kubernetes/kubectl datasource=github-tags extractVersion=^kubernetes-(?<version>.*)$
+  kubectl: "1.29.0" # renovate: depName=kubernetes/kubectl datasource=github-tags extractVersion=^kubernetes-(?<version>.*)$
   ripgrep: "11.0.2" # renocate depName=BurntSushi/ripgrep
   shellcheck: "0.9.0" # renovate: depName=koalaman/shellcheck
   skate: "0.2.2" # renovate: depName=charmbracelet/skate
