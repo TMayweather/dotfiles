@@ -1,7 +1,7 @@
 asdf_versions:
   age: "1.1.1" # renovate: depName=FiloSottile/age
   awscli: "2.11.26" # renovate depName=aws/aws-cli
-  dagger: "0.9.3" # renovate: depName=dagger/dagger
+  dagger: "0.9.4" # renovate: depName=dagger/dagger
   direnv: "2.23.3" # renovate depName=direnv/direnv
   flux2: "2.2.2" # renovate: depName=fluxcd/flux2
   github-cli: "2.39.2" # renovate: depName=cli/cli
