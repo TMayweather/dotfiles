@@ -13,7 +13,7 @@ asdf_versions:
   ripgrep: "11.0.2" # renocate depName=BurntSushi/ripgrep
   shellcheck: "0.9.0" # renovate: depName=koalaman/shellcheck
   skate: "0.2.2" # renovate: depName=charmbracelet/skate
-  starship: "1.16.0" # renovate: depName=starship/starship
+  starship: "1.17.1" # renovate: depName=starship/starship
   task: "3.29.1"  # renovate: depName=go-task/task
   terraform: "1.6.6" # renovate: depName=hashicorp/terraform
   tfctl: "0.14.0" # renovate: depName=weaveworks/tf-controller
