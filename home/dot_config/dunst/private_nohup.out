@@ -1,0 +1,24 @@
+WARNING: No icon found in path: 'dialog-information'
+WARNING: No icon found in path: 'dialog-information'
+CRITICAL: Source ID 16 was not found when attempting to remove it
+WARNING: No icon found in path: 'dialog-information'
+CRITICAL: Source ID 23 was not found when attempting to remove it
+WARNING: No icon found in path: 'dialog-information'
+CRITICAL: Source ID 30 was not found when attempting to remove it
+CRITICAL: Source ID 37 was not found when attempting to remove it
+CRITICAL: Source ID 40 was not found when attempting to remove it
+CRITICAL: Source ID 43 was not found when attempting to remove it
+CRITICAL: Source ID 51 was not found when attempting to remove it
+CRITICAL: Source ID 54 was not found when attempting to remove it
+CRITICAL: Source ID 57 was not found when attempting to remove it
+CRITICAL: Source ID 60 was not found when attempting to remove it
+CRITICAL: Source ID 63 was not found when attempting to remove it
+CRITICAL: Source ID 75 was not found when attempting to remove it
+CRITICAL: [dbus_cb_name_lost:1152] Cannot acquire 'org.freedesktop.Notifications': Name is acquired by 'dunst' with PID '9729'.
+WARNING: No icon found in path: 'dialog-information'
+WARNING: No icon found in path: 'dialog-information'
+CRITICAL: Source ID 16 was not found when attempting to remove it
+CRITICAL: Source ID 21 was not found when attempting to remove it
+CRITICAL: Source ID 24 was not found when attempting to remove it
+CRITICAL: Source ID 27 was not found when attempting to remove it
+X connection to :0 broken (explicit kill or server shutdown).
