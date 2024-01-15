@@ -1,6 +1,11 @@
 format = """
-[╭─](#8be9fd) $hostname$kubernetes$fill$git_branch$git_status$aws$python$terraform$pulumi
+[╭─](#8be9fd) $os $hostname$kubernetes$fill$git_branch$git_status$aws$python$terraform$pulumi$time
 [╰─](#8be9fd) $directory$character\n"""
+
+[os]
+format = "[]($style)"
+style = "bold #1793d0"
+disabled = false
 
 [character]
 success_symbol = "[❯](bold green)"
@@ -10,8 +15,8 @@ error_symbol = "[✖](bold red)"
 format = "[ $path]($style)[$read_only]($read_only_style) "
 read_only = " "
 truncation_length = 2
-truncation_symbol = "./"
-style = "blue"
+#truncation_symbol = "./"
+style = "bold blue"
 
 
 [git_branch]
@@ -23,7 +28,9 @@ style = "bold #ff5555"
 disabled = false
 
 [hostname]
-style = "#bd93f9"
+ssh_only = false
+style = "bold #50fa7b"
+format = '[$hostname]($style) '
 disabled = false
 
 [cmd_duration]
@@ -33,8 +40,8 @@ min_time=2_500
 style = "bold #6272a4"
 
 [aws]
-#symbol = '☁️ '
-#format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)
+#symbol = ' '
+#format = '(\[$profile )[\($region\)][\($duration\)]($style)
 #force_display = true
 #disabled = false
 style = "bold #f1fa8c"
@@ -43,7 +50,7 @@ style = "bold #f1fa8c"
 [kubernetes]
 symbol = "󱃾 "
 format = "[\\[$symbol$context \\($namespace\\)\\]]($style) "
-style  = "#ffb86c"
+style  = "bold #ffb86c"
 disabled = false
 
 
@@ -51,11 +58,18 @@ disabled = false
 style = "bold #bd93f9"
 
 [python]
-symbol = '🐍 '
+symbol = '󱔎 '
 format = "[\\[$symbol$pyenv_prefix($version )(\\($virtualenv\\))\\]]($style) "
 style = "bold #50fa7b"
 
 [terraform]
 symbol = "󱁢 "
 format = "[\\[$symbol$workspace\\]]($style) "
+
+[time]
+disabled = false
+format = '[\[ $time \]]($style) '
+style = 'bold #bd93f9'
+time_format = '%T'
+utc_time_offset = '-5'
 

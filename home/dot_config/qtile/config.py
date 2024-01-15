@@ -50,7 +50,7 @@ import colors
 
 mod = "mod4"
 alt = "mod1"
-terminal = "alacritty"
+terminal = "kitty"
 
 # powerline = {
 #     "decorations": [
@@ -123,12 +123,14 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn Rofi"),
+    Key([mod], "l", lazy.spawn("betterlockscreen -l"), desc="Lock screen"),
+
 
     KeyChord([mod], "x", [
         Key([], "t", lazy.spawn("thunar")),
         Key([], "f", lazy.spawn("firefox")),
         Key([], "c", lazy.spawn("code")),
-        Key([], "d", lazy.spawn("flatpak run com.discordapp.Discord"))
+        Key([], "d", lazy.spawn("discord"))
     ])
 ]
 
@@ -138,7 +140,7 @@ groups = []
 
 group_names = ["1", "2", "3", "4", "5","6"]
 
-group_labels = ["󰨞", "", "󰙯", "", "","󱃾"]
+group_labels = ["󰨞", "", "", "󰙯", "","󱃾"]
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
 group_layouts = ["max", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
@@ -156,8 +158,8 @@ for i in range(len(group_names)):
 for i in groups:
     keys.extend([
         Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Mod + number to move to that group."),
-        Key(["mod1"], "Tab", lazy.screen.next_group(), desc="Move to next group."),
-        Key(["mod1", "shift"], "Tab", lazy.screen.prev_group(), desc="Move to previous group."),
+        Key([alt], "Tab", lazy.screen.next_group(), desc="Move to next group."),
+        Key([alt, "shift"], "Tab", lazy.screen.prev_group(), desc="Move to previous group."),
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name), desc="Move focused window to new group."),
     ])
 
@@ -165,11 +167,11 @@ for i in groups:
 
 #Define scratchpads
 groups.append(ScratchPad("0",[
-   DropDown("spotify", "flatpak run com.spotify.Client", match=Match(wm_class=['spotify']), width=0.4, height=0.4, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=True ),
-   DropDown("discord", "flatpak run com.discordapp.Discord", match=Match(wm_class=['discord']), width=0.6, height=0.6, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=False ),
-   DropDown("terminal", "alacritty --class=scratch", width=0.4, height=0.4, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=False ),
-   DropDown("obsidian", "flatpak run md.obsidian.Obsidian", match=Match(wm_class=['obsidian']) , x=0.3, y=0.1, width=0.6, height=0.6, on_focus_lost_hide=True ),
-   DropDown("glances", "alacritty -e glances", x=0.3, y=0.1, width=0.4, height=0.4, on_focus_lost_hide=False ),
+   DropDown("spotify", "spotify", match=Match(wm_class=['spotify']), width=0.4, height=0.4, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=True ),
+   DropDown("discord", "discord", match=Match(wm_class=['discord']), width=0.6, height=0.6, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=False ),
+   DropDown("terminal", "kitty --class=scratch", width=0.4, height=0.4, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=False ),
+   DropDown("obsidian", "obsidian", match=Match(wm_class=['obsidian']) , x=0.3, y=0.1, width=0.6, height=0.6, on_focus_lost_hide=True ),
+   DropDown("glances", "kitty -e glances", x=0.3, y=0.1, width=0.4, height=0.4, on_focus_lost_hide=False ),
 ]))
 
 keys.extend([
@@ -227,7 +229,6 @@ extension_defaults = widget_defaults.copy()
 def init_widgets_list():
     widgets_list = [
         widget.GroupBox(
-            font="Arimo Nerd Font",
             fontsize = 16,
             icon_size = 12,
             margin_y = 3,
@@ -266,7 +267,6 @@ def init_widgets_list():
         ),
         widget.Spacer(length = 10),
         widget.Mpris2(name = "Spotify",
-            objname = "org.mpris.MediaPlayer2.spotify",
             format = '󰝚 {xesam:title} - {xesam:album} - {xesam:artist} 󰝚',
             font = "JetBrains Mono Nerd Font Bold",
             fontsize = 12,
@@ -278,6 +278,13 @@ def init_widgets_list():
             stopped_text = 'Spotify Music Player'
             ),
         widget.Spacer(length = bar.STRETCH),
+        # widget.StatusNotifier(
+        #     background = colors[0],
+        #     foreground = colors[1],
+        #     icon_theme = "Dracula",
+        #     icon_size = 14,
+
+        # ),
         widget.Systray(
             background = colors[0],
             padding = 3,
@@ -286,17 +293,14 @@ def init_widgets_list():
         widget.CheckUpdates(
             font = "Fira Code Nerd Font",
             display_format = 'Updates: {updates}',
-            fmt ='',
+            fmt ='',
             colour_have_updates = colors[8],
             foreground = colors[8],
             background = colors[0],
             padding = 5,
-            distro = 'Fedora',                            
+            distro = 'Arch',                            
             no_update_string ='No updates',
             update_interval =36000,
-            mouse_callbacks={
-                'Button1': lazy.spawn(f"alacritty -e sudo dnf -y update")
-                            },
             ),
         widget.Sep(linewidth = 5),
         widget.CPU(
@@ -326,9 +330,11 @@ def init_widgets_list():
             font = "Fira Code Nerd Semi Bold Font",
             foreground = colors[6],
             background = colors[0],
-            interface = 'wlp0s20u14',
-            format='  {down:}',
-            width = 75,
+            interface = 'wlan0',
+            margin = 5,
+            format='    {down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix} ',
+#            width = 100,
+            prefix = 'M',
             **decor_layout
         ),
         widget.Sep(linewidth = 5),
@@ -346,12 +352,12 @@ def init_widgets_list():
 
          ),
         widget.Sep(linewidth = 5),
-        widget.Clock(format='  %A %m/%d %I:%M%p',
+        widget.Clock(format='   %A %m/%d %I:%M%p',
                      font = "Fira Code Nerd Semi Bold Font",
                      fontsize = 13,
                      foreground = colors[7],
                      background = colors[0],
-                     padding_x = 2,
+                     padding_x = 5,
                      **decor_layout
                      ),
         widget.Sep(linewidth = 5),
@@ -359,12 +365,12 @@ def init_widgets_list():
             countdown_start = 7,
             # fontshadow = None, # 'shadow'
             default_text = '',
-            # countdown_format = '<span foreground="' + colors[1] + '">{}</span>',
+            # countdown_format = '<span foreground="' + colors[1] + '">{}</span>',``
             padding = 8,
             background = colors[6],
             mouse_callbacks = {
                 'Button1':
-                lazy.spawn("rofi -show power-menu -modi power-menu:~/.config/qtile/scripts/rofi-power-menu.sh"),
+                lazy.spawn("rofi -show power-menu -modi power-menu:~/.local/bin/rofi-power-menu"),
             },
         ),    
     ]
@@ -393,9 +399,14 @@ if __name__ in ["config", "__main__"]:
     widgets_screen2 = init_widgets_screen2()
 
 # Group Screen Assignments
-groups[0].screen = 0
-groups[1].screen = 1
-groups[2].screen = 2
+# groups[0].screen = 0
+# groups[1].screen = 2
+# groups[2].screen = 1
+
+# screens[0].groups =[1]
+# screens[1].groups =[3]
+# screens[2].groups =[2]
+
 
 # Define group assignments for applications
 @hook.subscribe.client_new
@@ -408,18 +419,20 @@ def assign_applications(client):
         if wm_class in ["code", "steam"]:
             client.togroup("1")
 
-        elif wm_class in ["firefox", "thunar"]:
+        elif wm_class in ["kitty", "thunderbird"]:
             client.togroup("2")
 
-        elif wm_class in ["discord"]:
-            client.togroup("3")
-
-        elif wm_class in ["alacritty", "thunderbird"]:
+        elif wm_class in ["discord", "slack"]:
             client.togroup("4")
+
+        elif wm_class in ["obsidian"]:
+            client.togroup("5")
+
+        elif wm_class in ["firefox", "thunar"]:
+            client.togroup("3")
 
         elif wm_class in ["1password"]:
             client.togroup("6")
-
 
 
 @lazy.function
@@ -455,6 +468,15 @@ floating_layout = layout.Floating(
     ],
     border_focus = colors[6],
 )
+
+@hook.subscribe.client_new
+def floating_dialogs(window):
+    if "File Dialog" in window.window.get_name():
+        window.floating = True
+        window.place(
+            x=0, y=0, width=screen.width, height=screen.height
+        )
+        
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
@@ -470,8 +492,9 @@ wl_input_rules = None
 def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
+    qtile.cmd_to_screen("1", groups=["3"])
 
-    qtile.cmd_spawn("flatpak run com.discordapp.Discord")
+#    qtile.cmd_spawn("flatpak run com.discordapp.Discord")
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
@@ -481,4 +504,4 @@ def start_once():
 #
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
-wmname = "QTILE"
+wmname = "qtile"
