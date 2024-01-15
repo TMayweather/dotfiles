@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=3000
-SAVEHIST=3000
+HISTSIZE=5000
+SAVEHIST=5000
 setopt autocd
 bindkey -e
 #bindkey '^[[A' history-substring-search-up
@@ -10,11 +10,9 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'
 alias bls='betterlockscreen --lock'
+alias cilium='cilium-cli'
 alias d='docker'
 alias dag='dagger'
-alias git st="git status"
-alias git a="git add ."
-alias git p="git push"
 alias k='kubectl'
 alias m='micro'
 alias vi='nvim'
@@ -22,27 +20,31 @@ alias p='pulumi'
 alias t='terraform'
 alias ap='ansible-playbook'
 alias sp='spotify_player'
-export PATH="$PATH:$HOME/.cargo/bin"
+#export PATH="$PATH:$HOME/.cargo/bin"
 export KUBECONFIG=~/.kube/config
 #export PATH=$PATH:/home/linuxbrew/.linuxbrew/opt/python@3.11/lib/python3.11/site-packages
 
 #export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 #zplug plugins
 source $HOME/.zplug/init.zsh
-zplug "agpenton/1password-zsh-plugin"
 zplug "zshzoo/cd-ls"
-zplug "plugins/autojump", from:oh-my-zsh
 zplug "zdharma-continuum/fast-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "nvbn/thefuck"
-zplug "linnnus/autovenv"
-source /etc/profile.d/autojump.sh
+#zplug "nvbn/thefuck"
+#source /etc/profile.d/autojump.sh
 
 zplug load
 
-. "$HOME/.asdf/asdf.sh"
+. /opt/asdf-vm/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 fpath=($HOME/.zsh/completions $fpath)
+
+export LS_OPTIONS='--color=auto'
+eval "$(dircolors)"
+alias ls='ls $LS_OPTIONS'
+
+export VISUAL=nvim
+export EDITOR=nvim
 
 autoload -Uz compinit
 compinit
@@ -52,10 +54,19 @@ eval "$(op completion zsh)"; compdef _op op
 source <(kubectl completion zsh)
 #source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export PATH="$PATH:$HOME/.local/bin"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 command -v flux >/dev/null && . <(flux completion zsh)
 
-
-
-
 eval $(thefuck --alias)
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(atuin init zsh --disable-up-arrow)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# Optionally (when you use pyenv virtualenv)
+eval "$(pyenv virtualenv-init -)"
+#source <(cilium completion)
