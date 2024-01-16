@@ -4,7 +4,7 @@ asdf_versions:
   dagger: "0.9.6" # renovate: depName=dagger/dagger
   direnv: "2.23.3" # renovate depName=direnv/direnv
   flux2: "2.2.2" # renovate: depName=fluxcd/flux2
-  github-cli: "2.42.0" # renovate: depName=cli/cli
+  github-cli: "2.42.1" # renovate: depName=cli/cli
   helm: "3.13.3" # renovate: depName=helm/helm
   pulumi: "3.101.1" # renovate: depName=pulumi/pulumi
   k9s: "0.31.5" # renovate: depName=derailed/k9s
