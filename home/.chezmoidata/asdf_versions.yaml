@@ -15,7 +15,7 @@ asdf_versions:
   skate: "0.2.2" # renovate: depName=charmbracelet/skate
   starship: "1.17.1" # renovate: depName=starship/starship
   task: "3.29.1"  # renovate: depName=go-task/task
-  terraform: "1.6.6" # renovate: depName=hashicorp/terraform
+  terraform: "1.7.0" # renovate: depName=hashicorp/terraform
   tfctl: "0.14.0" # renovate: depName=weaveworks/tf-controller
   TFLint: "0.49.0" # renovate depNanme=terraformlinters/tflint
   yamllint: "1.30.0" # renovate: depName=adrienverge/yamllint
