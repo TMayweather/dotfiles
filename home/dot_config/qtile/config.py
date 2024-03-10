@@ -106,7 +106,7 @@ keys = [
 
 
 
-    # Toggle between split and unsplit sides of stack.s
+    # Toggle between split and unsplit sides of stack
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
@@ -452,7 +452,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
