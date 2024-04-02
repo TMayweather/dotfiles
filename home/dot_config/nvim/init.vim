@@ -17,6 +17,13 @@ Plug 'https://github.com/hrsh7th/nvim-cmp'
 Plug 'https://github.com/nvim-lua/plenary.nvim'
 Plug 'https://github.com/nvim-telescope/telescope.nvim'
 Plug 'https://github.com/kylechui/nvim-surround'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jiangmiao/auto-pairs'
+Plug 'tmhedberg/matchit'
+Plug 'tpope/vim-fugitive'
+
+
+
 call plug#end()
 colorscheme dracula
 
@@ -34,4 +41,6 @@ hi NormalNC guibg=#282a36 ctermbg=NONE
 
 " Disable background highlight for search results
 set nohlsearch
+" For Vimscript configuration
+inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 

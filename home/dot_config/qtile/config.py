@@ -130,7 +130,6 @@ keys = [
         Key([], "t", lazy.spawn("thunar")),
         Key([], "f", lazy.spawn("firefox")),
         Key([], "c", lazy.spawn("code")),
-        Key([], "d", lazy.spawn("discord"))
     ])
 ]
 
@@ -138,12 +137,12 @@ keys = [
 # Create labels for groups and assign them a default layout.
 groups = []
 
-group_names = ["1", "2", "3", "4", "5","6"]
+group_names = ["1", "2", "3", "4", "5","6","7","8","9"]
 
-group_labels = ["󰨞", "", "", "󰙯", "","󱃾"]
+group_labels = ["󰨞", "", "", "󰙯", "","󱃾","󰌃","󰺻",""]
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
-group_layouts = ["max", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["max", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall","max","monadtall","treetab"]
 
 # Add group names, labels, and default layouts to the groups object.
 for i in range(len(group_names)):
@@ -169,16 +168,16 @@ for i in groups:
 groups.append(ScratchPad("0",[
    DropDown("spotify", "spotify", match=Match(wm_class=['spotify']), width=0.4, height=0.4, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=True ),
    DropDown("discord", "discord", match=Match(wm_class=['discord']), width=0.6, height=0.6, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=False ),
+   DropDown("slack", "slack", match=Match(wm_class=['slack']), width=0.8, height=0.8, x=0.1, y=0.1, opacity=1, on_focus_lost_hide=True ),
    DropDown("terminal", "kitty --class=scratch", width=0.4, height=0.4, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=False ),
    DropDown("obsidian", "obsidian", match=Match(wm_class=['obsidian']) , x=0.3, y=0.1, width=0.6, height=0.6, on_focus_lost_hide=True ),
-   DropDown("glances", "kitty -e glances", x=0.3, y=0.1, width=0.4, height=0.4, on_focus_lost_hide=False ),
 ]))
 
 keys.extend([
    Key([mod], 'F7', lazy.group["0"].dropdown_toggle("spotify")),
    Key([mod], 'F8', lazy.group["0"].dropdown_toggle("discord")),
    Key([mod], 'F9', lazy.group["0"].dropdown_toggle("obsidian")),
-   Key([mod], 'F10', lazy.group["0"].dropdown_toggle("glances")),
+   Key([mod], 'F10', lazy.group["0"].dropdown_toggle("slack")),
    Key([mod], 'F11', lazy.group["0"].dropdown_toggle("terminal")),
 ])
 
@@ -204,7 +203,7 @@ layouts = [
     layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
     # layout.Tile(),
-    # layout.TreeTab(),
+    layout.TreeTab(**layout_theme),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
