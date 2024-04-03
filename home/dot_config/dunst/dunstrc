@@ -430,7 +430,7 @@
 #    summary = *twitter.com*
 #    urgency = normal
 [play_sound]
-appname = "Slack,Thunderbird,Discord"
+appname = "Thunderbird"
 summary = "*"
 script = "/home/lowkey/.local/bin/dunst-alert
 
