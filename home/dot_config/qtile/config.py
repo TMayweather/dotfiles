@@ -128,7 +128,7 @@ keys = [
 
     KeyChord([mod], "x", [
         Key([], "t", lazy.spawn("thunar")),
-        Key([], "f", lazy.spawn("firefox")),
+        Key([], "v", lazy.spawn("vivaldi")),
         Key([], "c", lazy.spawn("code")),
     ])
 ]
@@ -139,10 +139,10 @@ groups = []
 
 group_names = ["1", "2", "3", "4", "5","6","7","8","9"]
 
-group_labels = ["󰨞", "", "", "󰙯", "","󱃾","󰌃","󰺻",""]
+group_labels = ["󰅱", "", "", "󰙯", "","󱃾","","",""]
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
-group_layouts = ["max", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall","max","monadtall","treetab"]
+group_layouts = ["max", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall","max","max","treetab"]
 
 # Add group names, labels, and default layouts to the groups object.
 for i in range(len(group_names)):
@@ -166,7 +166,7 @@ for i in groups:
 
 #Define scratchpads
 groups.append(ScratchPad("0",[
-   DropDown("spotify", "spotify", match=Match(wm_class=['spotify']), width=0.4, height=0.4, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=True ),
+   DropDown("cider", "cider", match=Match(wm_class=['cider']), width=0.6, height=0.6, x=0.2, y=0.1, opacity=1, on_focus_lost_hide=True ),
    DropDown("discord", "discord", match=Match(wm_class=['discord']), width=0.6, height=0.6, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=False ),
    DropDown("slack", "slack", match=Match(wm_class=['slack']), width=0.8, height=0.8, x=0.1, y=0.1, opacity=1, on_focus_lost_hide=True ),
    DropDown("terminal", "kitty --class=scratch", width=0.4, height=0.4, x=0.3, y=0.1, opacity=1, on_focus_lost_hide=False ),
@@ -174,10 +174,9 @@ groups.append(ScratchPad("0",[
 ]))
 
 keys.extend([
-   Key([mod], 'F7', lazy.group["0"].dropdown_toggle("spotify")),
+   Key([mod], 'F7', lazy.group["0"].dropdown_toggle("cider")),
    Key([mod], 'F8', lazy.group["0"].dropdown_toggle("discord")),
    Key([mod], 'F9', lazy.group["0"].dropdown_toggle("obsidian")),
-   Key([mod], 'F10', lazy.group["0"].dropdown_toggle("slack")),
    Key([mod], 'F11', lazy.group["0"].dropdown_toggle("terminal")),
 ])
 
@@ -265,7 +264,7 @@ def init_widgets_list():
             width = 100   
         ),
         widget.Spacer(length = 10),
-        widget.Mpris2(name = "Spotify",
+        widget.Mpris2(name = "Cider Player",
             format = '󰝚 {xesam:title} - {xesam:album} - {xesam:artist} 󰝚',
             font = "JetBrains Mono Nerd Font Bold",
             fontsize = 12,
@@ -274,7 +273,7 @@ def init_widgets_list():
             max_chars = 50,
             width = 175,
             scroll_chars=50,
-            stopped_text = 'Spotify Music Player'
+            stopped_text = 'Cider Player'
             ),
         widget.Spacer(length = bar.STRETCH),
         # widget.StatusNotifier(
@@ -284,9 +283,25 @@ def init_widgets_list():
         #     icon_size = 14,
 
         # ),
+        
         widget.Systray(
             background = colors[0],
             padding = 3,
+        ),
+        widget.Pomodoro(
+            forground = colors[6],
+            background = colors[0],
+            padding = 10,
+            color_break = colors[9],
+            color_active = colors[4],
+            notifications_on = True,
+            prefix_break = "Break",
+            prefix_long_break = "Long Break",
+            prefix_paused = "Paused",
+            font = "JetBrains Mono Nerd Font Bold",
+            fontsize = 14,
+            num_pomodori = 2,
+            width = 150
         ),
         widget.Spacer(length = bar.STRETCH),
         widget.CheckUpdates(
@@ -427,11 +442,17 @@ def assign_applications(client):
         elif wm_class in ["obsidian"]:
             client.togroup("5")
 
-        elif wm_class in ["firefox", "thunar"]:
+        elif wm_class in ["vivaldi", "thunar"]:
             client.togroup("3")
 
         elif wm_class in ["1password"]:
             client.togroup("6")
+        
+        elif wm_class in ["java-lang-Thread"]:
+            client.togroup("7")
+
+        elif wm_class in ["figma-linux"]:
+            client.togroup("8")
 
 
 @lazy.function
