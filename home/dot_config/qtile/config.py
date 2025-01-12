@@ -122,7 +122,8 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn Rofi"),
+    Key([mod], "r", lazy.spawn("bash /home/lowkey/.config/rofi/launchers/type-1/launcher.sh"), desc="Spawn Rofi"),
+    Key([mod], "v", lazy.spawn("bash /home/lowkey/.config/rofi/applets/bin/volume.sh"), desc="Spawn Rofi Volume Control"),
     Key([mod], "l", lazy.spawn("betterlockscreen -l"), desc="Lock screen"),
 
 
@@ -384,7 +385,7 @@ def init_widgets_list():
             background = colors[6],
             mouse_callbacks = {
                 'Button1':
-                lazy.spawn("rofi -show power-menu -modi power-menu:~/.local/bin/rofi-power-menu"),
+                lazy.spawn("bash /home/lowkey/.config/rofi/applets/bin/powermenu.sh"),
             },
         ),    
     ]
